@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fffafc, #ffeef6);
+  font-family: "Parisienne", cursive;
+  overflow: hidden;
+}
+
+/* Cartão central delicado */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 50px 70px;
+  border-radius: 35px;
+  box-shadow: 0px 6px 25px rgba(255, 182, 193, 0.35);
+  border: 3px solid #fff0f6;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  color: #e38ab3;
+  font-size: 3.3rem;
+  margin-bottom: 45px;
+  font-family: "Great Vibes", cursive;
+  position: relative;
+}
+
+/* Laços brancos decorativos */
+h1::before,
+h1::after {
+  content: "🤍";
+  font-size: 2.2rem;
+  position: absolute;
+  top: -20px;
+}
+h1::before {
+  left: -40px;
+}
+h1::after {
+  right: -40px;
+}
+
+.buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+button {
+  background: #ffeaf3;
+  border: 2px solid #fff;
+  padding: 15px 40px;
+  font-size: 1.4rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(255, 192, 203, 0.4);
+  font-family: "Parisienne", cursive;
+  color: #d86fa7;
+}
+
+button:hover {
+  background: #ffd6eb;
+  transform: scale(1.07);
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: explode 2.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0.5);
+    opacity: 0;
+  }
+}

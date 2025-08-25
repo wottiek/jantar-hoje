@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuzinho hoje?</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="card">
+    <h1>Cuzinho hoje?</h1>
+    <div class="buttons">
+      <button id="sim">Sim 🎀</button>
+      <button id="nao">Não</button>
+    </div>
+  </div>
+
+  <script>
+    const naoBtn = document.getElementById("nao");
+    const simBtn = document.getElementById("sim");
+  
+    // Faz o botão "Não" fugir
+    naoBtn.addEventListener("mouseenter", moveButton);
+    naoBtn.addEventListener("click", moveButton);
+  
+    function moveButton() {
+      naoBtn.style.position = "absolute";
+  
+      const btnWidth = naoBtn.offsetWidth;
+      const btnHeight = naoBtn.offsetHeight;
+  
+      const padding = 20; // margem da tela
+  
+      // Calcula limites EXATOS
+      const maxX = window.innerWidth - btnWidth - padding;
+      const maxY = window.innerHeight - btnHeight - padding;
+  
+      // Garante que fique dentro
+      const x = Math.min(Math.max(padding, Math.random() * maxX), maxX);
+      const y = Math.min(Math.max(padding, Math.random() * maxY), maxY);
+  
+      naoBtn.style.left = `${x}px`;
+      naoBtn.style.top = `${y}px`;
+    }
+  
+    // Partículas fofas (corações + laços)
+    simBtn.addEventListener("click", () => {
+      for (let i = 0; i < 60; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+  
+        // alterna entre laço branco e coração rosa
+        particle.innerHTML = Math.random() > 0.5 ? "🤍" : "🎀";
+  
+        const x = (Math.random() - 0.5) * 700;
+        const y = (Math.random() - 0.5) * 700;
+  
+        particle.style.setProperty("--x", `${x}px`);
+        particle.style.setProperty("--y", `${y}px`);
+        particle.style.fontSize = `${Math.random() * 20 + 18}px`;
+  
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 2500);
+      }
+    });
+  </script>
+  
+  
+  
